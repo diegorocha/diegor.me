@@ -11,6 +11,17 @@ def index():
 def alias_url(alias):
     return handle_alias(alias)
 
+@app.route("/add")
+def add():
+    return render_template("add.htm")
+
+@app.route("/save")
+def save():
+    item = {'alias': None, 'url': None}
+    if diegor_me.save(item):
+	return render_template("saved.htm")
+    return render_template("error.htm")
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template("404.htm"), 404
