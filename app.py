@@ -17,7 +17,7 @@ def alias_url(alias):
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template("404.htm"), 404
+    return render_template("404.htm", error=error), 404
 
 
 def handle_alias(alias=''):
